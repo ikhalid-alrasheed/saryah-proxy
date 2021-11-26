@@ -79,27 +79,26 @@ def get_user(user_id):
     return User.query.get(user_id)
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
-    """id_type : ['apple_id', 'phone_NO']"""
-    signup_type =  request.form["id_type"]
-    user = User.query.filter_by(apple_id=request.form[signup_type]).first() if type == "apple_id" \
-        else User.query.filter_by(phone_NO=request.form[signup_type]).first()
+    """id_type : 'apple_id' or 'phone_NO'"""
+    form = request.get_json(force=True);signup_type = form["id_type"]
+    user = User.query.filter_by(apple_id=form[signup_type]).first() if type == "apple_id" \
+        else User.query.filter_by(phone_NO=form[signup_type]).first()
     if user : return f"user already exist"
     del user;user = User()
-    setattr(user, signup_type, request.form[signup_type])
-    if signup_type != "apple_id":user.set_password(request.form["password"])
-    db.session.add(user)
-    db.session.commit()
+    setattr(user, signup_type, form[signup_type])
+    if signup_type != "apple_id":user.set_password(form["password"])
+    db.session.add(user);db.session.commit()
     return jsonify(user.to_dict())
 @app.route('/login', methods=['POST'])
 def login():
-    login_type = request.form["id_type"]
-    user = User.query.filter_by(apple_id=request.form[login_type]).first() if login_type == "apple_id" \
-        else User.query.filter_by(phone_NO=request.form[login_type]).first()
+    form = request.get_json(force=True);login_type = form["id_type"]
+    user = User.query.filter_by(apple_id=form[login_type]).first() if login_type == "apple_id" \
+        else User.query.filter_by(phone_NO=form[login_type]).first()
     if not user : return "this user does not exist"
     if login_type == "apple_id": login_user(user); return "user logged in"
-    if user.check_password(request.form["password"]):
+    if user.check_password(form["password"]):
         login_user(user);return "user logged in"
     return "password does not match"
 app.secret_key = b'192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
