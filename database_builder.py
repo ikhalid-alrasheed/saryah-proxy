@@ -15,11 +15,13 @@ def read_table(table_name, opj):
     db.session.commit()
     print(f"table {table_name} has been added to the DateBase")
     return None
-
-if __name__ == "__main__":
+def Do():
     db.drop_all()
     db.create_all()
     read_table("Users", User)
     read_table("Cars", Cars)
     read_table("Transactions", Transactions)
     read_table("Policies", Policies)
+    return
+
+

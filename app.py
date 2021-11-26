@@ -73,7 +73,7 @@ class Policies(db.Model):
 # routs
 @app.route('/')
 def init():
-    return exec(open('database_builder.py').read())
+    from database_builder import Do;Do();return "init"
 @login_manager.user_loader
 def get_user(user_id):
     return User.query.get(user_id)
