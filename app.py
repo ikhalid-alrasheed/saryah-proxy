@@ -71,6 +71,9 @@ class Policies(db.Model):
         return {key: getattr(self, key, None) if key in keys else [item.to_dict() for item in getattr(self, key, None)]
                 for key in keys + relation_keys}
 # routs
+@app.route('/')
+def init():
+    return exec(open('database_builder.py').read())
 @login_manager.user_loader
 def get_user(user_id):
     return User.query.get(user_id)
@@ -99,8 +102,4 @@ def login():
     return "password does not match"
 app.secret_key = b'192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
 if __name__ == "__main__":
-    exec(open('database_builder.py').read())
-    import sys
-    host = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
-    port = int(sys.argv[2]) if len(sys.argv) > 1 else 5000
-    app.run(debug=False, host=host, port=port)
+    app.run(debug=False)
