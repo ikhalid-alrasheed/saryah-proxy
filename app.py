@@ -20,8 +20,7 @@ class User(db.Model, UserMixin):
     def how_old_in_years(self): return (datetime.utcnow() - self.birthday).days // 365
     def to_dict(self):
         keys = ['id', 'apple_id', 'full_name', 'sex', 'nationality', 'birthday', 'email', 'government_id', 'national_address',
-                'phone_NO', "password"]
-        relation_keys =  ["cars", "owned_cars"]
+                'phone_NO', "password"];relation_keys =  ["cars", "owned_cars"]
         return {key : getattr(self, key, None) if key in keys else [item.to_dict() for item in getattr(self, key, None)]
                 for key in keys + relation_keys}
 class Cars(db.Model):
@@ -98,11 +97,10 @@ def login():
     if user.check_password(request.form["password"]):
         login_user(user);return "user logged in"
     return "password does not match"
-
-
 app.secret_key = b'192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
-
 if __name__ == "__main__":
     exec(open('database_builder.py').read())
-
-    app.run(debug=True)
+    import sys
+    host = sys.argv[1] if len(sys.argv) > 1 else "127.0.0.1"
+    port = int(sys.argv[2]) if len(sys.argv) > 1 else 5000
+    app.run(debug=False, host=host, port=port)
