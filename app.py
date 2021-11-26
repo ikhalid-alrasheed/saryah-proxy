@@ -94,10 +94,10 @@ def login():
     user = User.query.filter_by(apple_id=request.form[login_type]).first() if login_type == "apple_id" \
         else User.query.filter_by(phone_NO=request.form[login_type]).first()
     if not user : return "this user does not exist"
+    if login_type == "apple_id": login_user(user); return "user logged in"
     if user.check_password(request.form["password"]):
-        login_user(user)
-        return "200"
-    return str(user.password == hash(request.form["password"]))
+        login_user(user);return "user logged in"
+    return "password does not match"
 
 
 app.secret_key = b'192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf'
