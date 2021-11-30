@@ -5,7 +5,7 @@ from random import randrange, random
 cars = reading_from_json("cars.json")
 drivers = reading_from_json("drivers.json")
 
-@app.route("/person", methods=["POST"])
+@simulation_app.route("/person", methods=["POST"])
 def person():
     """
     {"person_id": "1xxxxxxxxx",
@@ -18,7 +18,7 @@ def person():
     return {"car": cars[f"{randrange(7)+1}"],
     "owner": drivers[f"{randrange(10)+1}"]}
 
-@app.route("/hello", methods=["POST"])
+@simulation_app.route("/hello", methods=["POST"])
 def hi():
     return "HI Khalid"
 
