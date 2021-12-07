@@ -1,0 +1,186 @@
+{
+    "drivers": {
+        "1": {
+            "full_name": "khalid Alrasheed",
+            "first_name": "khalid",
+            "last_name": "Alrasheed",
+            "sex": "male",
+            "nationality": "Saudi",
+            "birthday": "1993-10-12 00:00:00",
+            "email": "khalid@cycls.io",
+            "national_address": "1542 addyar street ",
+            "phone_NO": 558479979
+        },
+        "2": {
+            "full_name": "mohmmed alogayyil",
+            "first_name": "mohmmed",
+            "last_name": "alogayyil",
+            "sex": "male",
+            "nationality": "Saudi",
+            "birthday": "1993-01-13 00:00:00",
+            "email": "alogyyil@cycls.io",
+            "national_address": "5255 alsalam street",
+            "phone_NO": 541231564
+        },
+        "3": {
+            "full_name": "saleh alsuliman ",
+            "first_name": "saleh",
+            "last_name": "alsuliman",
+            "sex": "male",
+            "nationality": "Saudi ",
+            "birthday": "1996-03-02 00:00:00",
+            "email": "saleh@gmail.com",
+            "national_address": "3214 khalid ibn alwaleed",
+            "phone_NO": 562318790
+        },
+        "4": {
+            "full_name": "faisal alogayyil",
+            "first_name": "faisal",
+            "last_name": "alogayyil",
+            "sex": "male",
+            "nationality": "Saudi",
+            "birthday": "1970-07-25 00:00:00",
+            "email": "faisal@gmail.com",
+            "national_address": "8123 some street",
+            "phone_NO": 501148450
+        },
+        "5": {
+            "full_name": "Mansour alrujaiy",
+            "first_name": "Mansour",
+            "last_name": "alrujaiy",
+            "sex": "male",
+            "nationality": "Saudi",
+            "birthday": "1994-11-16 00:00:00",
+            "email": "manour@gmail.com",
+            "national_address": "9231 onizah street",
+            "phone_NO": 551210346
+        },
+        "6": {
+            "full_name": "ghadah alothman ",
+            "first_name": "ghadah",
+            "last_name": "alothman",
+            "sex": "female",
+            "nationality": "Saudi ",
+            "birthday": "1973-07-24 00:00:00",
+            "email": "ghadah@gmail.com",
+            "national_address": "1015 abu ubidah street",
+            "phone_NO": 515452075
+        },
+        "7": {
+            "full_name": "salwa alsaleh",
+            "first_name": "salwa",
+            "last_name": "alsaleh",
+            "sex": "female",
+            "nationality": "Saudi ",
+            "birthday": "1987-03-04 00:00:00",
+            "email": "salwa@gmail.com",
+            "national_address": "4123 some old guy",
+            "phone_NO": 599729825
+        },
+        "8": {
+            "full_name": "muna almarzogy",
+            "first_name": "muna",
+            "last_name": "almarzogy",
+            "sex": "female",
+            "nationality": "Saudi ",
+            "birthday": "1970-11-27 00:00:00",
+            "email": "muna@gmail.com",
+            "national_address": "3014 mohammed al saud street",
+            "phone_NO": 513018052
+        },
+        "9": {
+            "full_name": "fatemah alsalamh ",
+            "first_name": "fatemah",
+            "last_name": "alsalamh",
+            "sex": "female",
+            "nationality": "Saudi ",
+            "birthday": "1989-10-26 00:00:00",
+            "email": "fatemah@gmail.com",
+            "national_address": "5120 knglks street ",
+            "phone_NO": 507256068
+        },
+        "10": {
+            "full_name": "zainab alsalamh",
+            "first_name": "zainab",
+            "last_name": "alsalamh",
+            "sex": "female",
+            "nationality": "Saudi ",
+            "birthday": "1970-12-28 00:00:00",
+            "email": "zainab@gmail.com",
+            "national_address": "4551 street ",
+            "phone_NO": 544706888
+        }
+    },
+    "cars": {
+        "1": {
+            "model": "A6",
+            "model_year": 2020,
+            "model_manufacturer": "Mazda",
+            "global_id": 1361981693,
+            "global_id_type": "chassis",
+            "plate_NO": "ABC1234",
+            "color": "White ",
+            "body_type": "4SYD"
+        },
+        "2": {
+            "model": "Camry",
+            "model_year": 2021,
+            "model_manufacturer": "Toyota",
+            "global_id": 1752747638,
+            "global_id_type": "chassis",
+            "plate_NO": "ABC1235",
+            "color": "Black",
+            "body_type": "4SYD"
+        },
+        "3": {
+            "model": "Corolla",
+            "model_year": 2019,
+            "model_manufacturer": "Toyota",
+            "global_id": 1804366766,
+            "global_id_type": "chassis",
+            "plate_NO": "ABC1236",
+            "color": "Gray",
+            "body_type": "4SYD"
+        },
+        "4": {
+            "model": "Elantra",
+            "model_year": 2022,
+            "model_manufacturer": "Hyundai",
+            "global_id": 1366206397,
+            "global_id_type": "chassis",
+            "plate_NO": "ABC1237",
+            "color": "Blue ",
+            "body_type": "4SYD"
+        },
+        "5": {
+            "model": "Sonata",
+            "model_year": 2019,
+            "model_manufacturer": "Hyundai",
+            "global_id": 1075704874,
+            "global_id_type": "chassis",
+            "plate_NO": "ABC1238",
+            "color": "Red",
+            "body_type": "4SYD"
+        },
+        "6": {
+            "model": "CX-9",
+            "model_year": 2018,
+            "model_manufacturer": "Mazda",
+            "global_id": 1202111132,
+            "global_id_type": "chassis",
+            "plate_NO": "ABC1239",
+            "color": "White ",
+            "body_type": "SUV"
+        },
+        "7": {
+            "model": "UX",
+            "model_year": 2020,
+            "model_manufacturer": "Lexus",
+            "global_id": 1665950216,
+            "global_id_type": "customs",
+            "plate_NO": "ABC1240",
+            "color": "Silver",
+            "body_type": "SUV"
+        }
+    }
+}
