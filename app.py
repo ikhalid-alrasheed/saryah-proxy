@@ -16,7 +16,7 @@ class User(db.Model):
 class Sex(enum.Enum):F="female";M="male";O="other"
 class DriverIdType(enum.Enum):ID="id";IQAMA="igama"
 class Driver(db.Model):
-    id=C(I,primary_key=True);timestamp=C(T, default=db.func.now())
+    id=C(I,primary_key=True);timestamp=C(T, server_default=db.func.now())
     first_name=C(S)
     last_name=C(S)
     sex=C(db.Enum(Sex), nullable=False, default=Sex.O)
@@ -29,7 +29,7 @@ class Driver(db.Model):
     phone_NO=C(S, unique=True)
 class CarIdType(enum.Enum):CHASSIS="chassis";CUSTOMS="customs"
 class Car(db.Model):
-    id=C(I, primary_key=True);timestamp=C(T, default=db.func.now())
+    id=C(I, primary_key=True);timestamp=C(T, server_default=db.func.now())
     model=C(S)
     model_year=C(S)
     model_manufacturer=C(S)
@@ -39,7 +39,7 @@ class Car(db.Model):
     color=C(S)
     body_type=C(S)
 class Application(db.Model):
-    id=C(I,primary_key=True);timestamp=C(T, default=db.func.now())
+    id=C(I,primary_key=True);timestamp=C(T, server_default=db.func.now())
     user_id=C(I, FK("user.id"), nullable=False)
     user=RL("User", foreign_keys=[user_id], backref="applications", lazy=True)
     driver_id=C(I, FK("driver.id"), nullable=False)
@@ -47,7 +47,7 @@ class Application(db.Model):
     car_id=C(I, FK("car.id"), nullable=False)
     car=RL('Car', backref='applications', lazy=True)
 class Transaction(db.Model):
-    id = C(I, primary_key=True);timestamp = C(T, default=db.func.now())
+    id = C(I, primary_key=True);timestamp = C(T, server_default=db.func.now())
     application_id=C(I, FK("application.id"), nullable=False)
     application=RL("Application", backref="transaction", lazy=True)
     epow_id = C(I)
@@ -56,7 +56,7 @@ class Transaction(db.Model):
     vat_halalah = db.ColumnProperty(0.15 * subtotal_halalah)
     total_halalah = db.ColumnProperty(subtotal_halalah + vat_halalah)
 class Policy(db.Model):
-    id=C(I,primary_key=True);timestamp=C(T, default=db.func.now())
+    id=C(I,primary_key=True);timestamp=C(T, server_default=db.func.now())
     transaction_id = C(I, FK("transaction.id"), nullable=False)
     transaction = RL('Transaction', backref='policy', lazy=True)
     provider = C(S)
