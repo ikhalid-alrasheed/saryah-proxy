@@ -1,5 +1,3 @@
-import ctypes.wintypes
-
 from flask import Flask, request, jsonify;from flask_sqlalchemy import SQLAlchemy
 import enum;import requests;from datetime import datetime as dt
 app=Flask(__name__);app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///saryah.db'
@@ -76,6 +74,15 @@ def entity_from_json(model:db.Model, json):
             elif type(column.type)==db.DateTime: entity.__setattr__(c_name, dt.fromisoformat(json[c_name]))
             else: entity.__setattr__(c_name, json[c_name])
     return entity
+def entity_to_dict(entity, level:int=0):
+    if not entity:
+        return None
+    data = {col:str(entity.__getattribute__(col)) for col in entity.__table__.c.keys()}
+    if level > 0:
+        relations = [key for key in entity.__class__.__dict__.__getitem__("_sa_class_manager").keys() if key not in data]
+        for rel in relations:
+            data[rel] = entity_to_dict(entity.__getattribute__(rel), level-1)
+    return data
 # routs
 @app.route('/login', methods=['POST'])
 def login():
@@ -83,7 +90,7 @@ def login():
     u=User.query.filter_by(apple_id=r["apple_id"]).first()
     if not u:
         return jsonify({})
-    return  jsonify(u.to_dict())
+    return  jsonify(entity_to_dict(u))
 @app.route('/sign_up', methods=['POST'])
 def sign_up():
     request_data=request.get_json(force=True)
@@ -91,7 +98,7 @@ def sign_up():
     if not u:
         del u;u=entity_from_json(User, request_data)
         AD(u);CM()
-    return  jsonify(u.to_dict())
+    return   jsonify(entity_to_dict(u))
 @app.route("/application", methods=["POST"])
 def application():
     request_data=request.get_json(force=True)
@@ -104,9 +111,9 @@ def application():
     driver = entity_from_json(Driver, dict(kyc["driver"], **request_data))
     new_application=Application(user=user,car=car,driver=driver)
     AD(new_application);CM()
-    return f"{new_application}"
+    return  jsonify(entity_to_dict(new_application, 1))
 
 if __name__ == "__main__":
     db.drop_all()
     db.create_all()
-    app.run(debug=True)
+    app.run(debug=False, port=5000 , host="0.0.0.0")
